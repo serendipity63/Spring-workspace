@@ -1,0 +1,10 @@
+package com.kosta.di.sample2;
+
+public class MessageBeanImpl implements MessageBean {
+
+	@Override
+	public void sayHello() {
+
+	}
+
+}

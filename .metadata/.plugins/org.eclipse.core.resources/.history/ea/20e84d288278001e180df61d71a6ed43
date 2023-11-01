@@ -1,0 +1,10 @@
+package com.kosta.bank.dao;
+
+import com.kosta.bank.dto.Account;
+
+public interface AccountDao {
+	void insertAccount(Account acc) throws Exeption;
+
+	Account selectAccount(String id) throws Exception;
+	void updateAccountBalance(Map<String,Object> param) throws Exception;
+}

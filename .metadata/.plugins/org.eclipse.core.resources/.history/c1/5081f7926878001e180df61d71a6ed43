@@ -1,0 +1,11 @@
+package com.kosta.bank;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class AccountController {
+	
+	public String main() {
+		return "main";
+	}
+}

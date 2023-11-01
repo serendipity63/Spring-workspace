@@ -1,0 +1,12 @@
+package com.kosta.di.sample2;
+
+public class MessageBeanImpl implements MessageBean {
+	private String name;
+	private String greeting;
+
+	@Override
+	public void sayHello() {
+
+	}
+
+}
