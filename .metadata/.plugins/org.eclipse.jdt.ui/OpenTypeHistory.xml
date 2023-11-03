@@ -4,4 +4,6 @@
     <typeInfo handle="=di/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.di.sample2{MessageBean.java[MessageBean" modifiers="513" timestamp="1698738572395"/>
     <typeInfo handle="=di/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.di.sample2{Outputter.java[Outputter" modifiers="513" timestamp="1698739551954"/>
     <typeInfo handle="=di/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.di.sample3{Employee.java[Employee" modifiers="513" timestamp="1698741104253"/>
+    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.dao{AccountDao.java[AccountDao" modifiers="513" timestamp="1698821115068"/>
+    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.service{AccountService.java[AccountService" modifiers="513" timestamp="1698827779949"/>
 </typeInfoHistroy>

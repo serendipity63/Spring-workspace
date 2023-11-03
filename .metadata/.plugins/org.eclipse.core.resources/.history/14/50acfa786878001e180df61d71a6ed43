@@ -1,5 +1,0 @@
-package com.kosta.bank;
-@Controller
-public class AccountController {
-
-}

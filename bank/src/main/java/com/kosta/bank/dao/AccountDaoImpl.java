@@ -1,14 +1,17 @@
 package com.kosta.bank.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.kosta.bank.dto.Account;
 
+@Repository // 여기에 따로 붙임
 public class AccountDaoImpl implements AccountDao {
 
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 
 	public SqlSessionTemplate getSqlSession() {
@@ -30,8 +33,8 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public void updateAccountBalance(Map<String, Object> param) throws Exception {
-		sqlSession.update("mapper.account.updateBalance", param);
+	public void updateAccountBalance(Account acc) throws Exception {
+		sqlSession.update("mapper.account.updateBalance", acc);
 	}
 
 	@Override
