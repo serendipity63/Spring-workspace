@@ -51,7 +51,6 @@ public class BoardController {
 			mav.addObject("pageInfo", pageInfo);
 			mav.addObject("boardList", boardList);
 			mav.setViewName("boardlist");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			mav.setViewName("error");
@@ -90,12 +89,13 @@ public class BoardController {
 		}
 	}
 
-	@RequestMapping(value = "/boarddetail/{num}", method = RequestMethod.GET)
-	public ModelAndView boardDetail(@PathVariable Integer num) {
+	@RequestMapping(value = "/boarddetail/{num}/{page}", method = RequestMethod.GET)
+	public ModelAndView boardDetail(@PathVariable Integer num, @PathVariable Integer page) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			Board board = boardService.boardDetail(num);
 			mav.addObject("board", board);
+			mav.addObject("page", page);
 			Member user = (Member) session.getAttribute("user");
 			if (user != null) {
 				Boolean select = boardService.isBoardLike(user.getId(), num);
@@ -110,12 +110,13 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/boardmodify/{num}", method = RequestMethod.GET)
-	public ModelAndView boardModify(@PathVariable Integer num) {
+	@RequestMapping(value = "/boardmodify/{num}/{page}", method = RequestMethod.GET)
+	public ModelAndView boardModify(@PathVariable Integer num, @PathVariable Integer page) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			Board board = boardService.boardDetail(num);
 			mav.addObject("board", board);
+			mav.addObject("page", page);
 			mav.setViewName("modify");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,12 +127,12 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/boardmodify", method = RequestMethod.POST)
-	public ModelAndView boardModify(@ModelAttribute Board board, @RequestParam("file") MultipartFile file) {
+	public ModelAndView boardModify(@ModelAttribute Board board, @RequestParam("file") MultipartFile file,
+			@RequestParam("page") Integer page) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			Board mBoard = boardService.modifyBoard(board, file);
-			mav.addObject("board", mBoard);
-			mav.setViewName("detailform");
+			mav.setViewName("redirect:/boarddetail/" + board.getNum() + "/" + page); // 수정 후 상세 후 리스트 유지
 		} catch (Exception e) {
 			e.printStackTrace();
 			mav.addObject("err", "글 수정 오류");
@@ -166,4 +167,28 @@ public class BoardController {
 		}
 	}
 
+	@RequestMapping(value = "/boardsearch", method = RequestMethod.POST)
+	public ModelAndView boardSearch(@RequestParam("page") Integer page, @RequestParam("type") String type,
+			@RequestParam("keyword") String keyword) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			if (type.equals("all") || keyword == null || keyword.trim().equals("")) {
+				mav.setViewName("redirect:/boardlist");
+				return mav;
+			}
+			PageInfo pageInfo = new PageInfo();
+			pageInfo.setCurPage(page);
+			List<Board> boardList = boardService.boardSearchListByPage(type, keyword, pageInfo); // 객체를 파라미터로 넘기면 공유
+			mav.addObject("pageInfo", pageInfo);
+			mav.addObject("boardList", boardList);
+			mav.addObject("type", type);
+			mav.addObject("keyword", keyword);
+			mav.setViewName("boardlist");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject("err", "게시글 검색 실패");
+			mav.setViewName("error");
+		}
+		return mav;
+	}
 }

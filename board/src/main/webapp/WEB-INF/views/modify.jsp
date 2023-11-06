@@ -50,6 +50,7 @@ table {
 		<form action="${contextPath }/boardmodify" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="num" value="${board.num }" />
 			<input type="hidden" name="fileurl" value="${board.fileurl }" />
+			<input type="hidden" name="page" value="${page }" />
 			<table>
 				<tr>
 					<td class="td_left"><label for="writer">글쓴이</label></td>

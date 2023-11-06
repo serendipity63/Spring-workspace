@@ -42,6 +42,30 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	public List<Board> boardSearchListByPage(String type, String keyword, PageInfo pageInfo) throws Exception {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		int searchCount = boardDao.searchBoardCount(param);
+		if (searchCount == 0)
+			return null;
+
+		int allPage = (int) Math.ceil((double) searchCount / 10);
+		int startPage = (pageInfo.getCurPage() - 1) / 10 * 10 + 1;
+		int endPage = Math.min(startPage + 10 - 1, allPage);
+
+		pageInfo.setAllPage(allPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		if (pageInfo.getCurPage() > allPage)
+			pageInfo.setCurPage(allPage);
+		int row = (pageInfo.getCurPage() - 1) * 10 + 1;
+		param.put("row", row - 1);
+		return boardDao.searchBoardList(param);
+	}
+	// 어디로 넘겨주는거지?
+
+	@Override
 	public Board writeBoard(Board board, MultipartFile file) throws Exception {
 		if (file != null && !file.isEmpty()) { // 앞에서 false이면 뒤까지 가지도 않음 그래서 null 먼저 해야함
 			String dir = "c:/jisu/upload/";
@@ -78,6 +102,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board boardDetail(Integer num) throws Exception {
+		boardDao.updateBoardViewCount(num);
 		return boardDao.selectBoard(num);
 	}
 

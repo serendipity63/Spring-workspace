@@ -4,6 +4,12 @@
     <typeInfo handle="=di/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.di.sample2{MessageBean.java[MessageBean" modifiers="513" timestamp="1698738572395"/>
     <typeInfo handle="=di/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.di.sample2{Outputter.java[Outputter" modifiers="513" timestamp="1698739551954"/>
     <typeInfo handle="=di/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.di.sample3{Employee.java[Employee" modifiers="513" timestamp="1698741104253"/>
-    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.dao{AccountDao.java[AccountDao" modifiers="513" timestamp="1698821115068"/>
-    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.service{AccountService.java[AccountService" modifiers="513" timestamp="1698827779949"/>
+    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.dao{AccountDao.java[AccountDao" modifiers="513" timestamp="1698890470260"/>
+    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.service{AccountService.java[AccountService" modifiers="513" timestamp="1698883079082"/>
+    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.dao{MemberDao.java[MemberDao" modifiers="513" timestamp="1698883426545"/>
+    <typeInfo handle="=bank/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.bank.service{MemberService.java[MemberService" modifiers="513" timestamp="1698888128770"/>
+    <typeInfo handle="=board/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.board.dao{BoardDao.java[BoardDao" modifiers="513" timestamp="1698994454086"/>
+    <typeInfo handle="=board/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.board.service{BoardService.java[BoardService" modifiers="513" timestamp="1699236736393"/>
+    <typeInfo handle="=board/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.board.service{MemberService.java[MemberService" modifiers="513" timestamp="1698998844402"/>
+    <typeInfo handle="=board/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kosta.board.dao{MemberDao.java[MemberDao" modifiers="513" timestamp="1698907507631"/>
 </typeInfoHistroy>

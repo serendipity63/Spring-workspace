@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,10 +48,12 @@ table {
 <script>
 
 	function callBtn(num){
+		var type=$("#type").val();
 		var keyword=$("#keyword").val();
-		if(keyword!=null && keyword.trim()!='' ){
+		if(type!='all' && keyword!=null && keyword.trim()!='' ){
 			$('#page').val(num);
-			$('#searchform').submit;
+			$('#searchform').submit();
+			return false;
 		}
 	}
 	
@@ -74,8 +77,8 @@ table {
 				<option value="subject" ${type eq 'subject'? 'selected':''}>제목</option>
 				<option value="writer" ${type eq 'writer'? 'selected':''}>작성자</option>
 				<option value="content" ${type eq 'content'? 'selected':''}>내용</option>
-			</select> <input type="text" name="keyword" id="keyword"
-				value="${keyword }" /> <input type="submit" value="검색" />
+			</select> <input type="text" name="keyword" id="keyword" value="${keyword }" />
+			<input type="submit" value="검색" />
 		</h5>
 	</form>
 	<table>
@@ -90,14 +93,16 @@ table {
 			<c:forEach items="${boardList }" var="board">
 				<tr>
 					<td>${board.num }</td>
-					<td><a href="${contextPath }/boarddetail/${board.num }">${board.subject}</a>
+					<td><a href="${contextPath }/boarddetail/${board.num }/${pageInfo.curPage}">${board.subject}</a>
 					</td>
 					<td>${board.writer }</td>
 					<td>${board.writedate }</td>
 					<td>${board.viewcount }</td>
 					<!--작성자만 삭제할 수 있게 하게 -->
 					<td><c:if test="${user.id == board.writer }">
-							<a href="${contextPath }/boarddelete/${board.num }/${pageInfo.curPage}">삭제</a>
+							<a
+								href="${contextPath }/boarddelete/${board.num }/${pageInfo.curPage}"
+							>삭제</a>
 						</c:if></td>
 				</tr>
 			</c:forEach>
@@ -106,7 +111,7 @@ table {
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${pageInfo.curPage>1 }">
-				<a href="${contextPath }/boardlist?page=${pageInfo.curPage-1 }">&lt;</a>
+				<a href="${contextPath }/boardlist?page=${pageInfo.curPage-1 }" onclick="return callBtn(${pageInfo.curPage-1 });">&lt;</a>
 			</c:when>
 			<c:otherwise>
 	 		&lt;
@@ -114,16 +119,19 @@ table {
 		</c:choose>
 		&nbsp;&nbsp;
 
-		<c:forEach begin="${pageInfo.startPage }"
-			end="${pageInfo.endPage }" var="i">
+		<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }"
+			var="i"
+		>
 			<c:choose>
 				<c:when test="${pageInfo.curPage==i }">
 					<a href="${contextPath }/boardlist?page=${i}" class="select"
-						onclick="callBtn(${i});return ${keyword==null };">${i}</a>&nbsp;	
+						onclick="return callBtn(${i});"
+					>${i}</a> &nbsp;	
 			</c:when>
 				<c:otherwise>
 					<a href="${contextPath }/boardlist?page=${i}" class="btn"
-						onclick="callBtn(${i});return ${keyword==null };">${i}</a>&nbsp;	
+						onclick="return callBtn(${i});"
+					>${i}</a> &nbsp;	
 			</c:otherwise>
 			</c:choose>
 
@@ -131,7 +139,7 @@ table {
 
 		<c:choose>
 			<c:when test="${pageInfo.curPage<pageInfo.allPage}">
-				<a href="${contextPath }/boardlist?page=${pageInfo.curPage+1 }">&gt;</a>
+				<a href="${contextPath }/boardlist?page=${pageInfo.curPage+1 }" onclick="return callBtn(${pageInfo.curPage+1});">&gt;</a>
 			</c:when>
 			<c:otherwise>
 				&gt;

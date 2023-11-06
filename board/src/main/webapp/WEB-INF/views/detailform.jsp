@@ -98,9 +98,10 @@ table {
 		</table>
 		<section id="commandCell">
 			<c:if test="${user.id eq board.writer }">
-				<a href="${contextPath }/boardmodify/${board.num}">수정</a> &nbsp;&nbsp;
+				<a href="${contextPath }/boardmodify/${board.num}/${page}">수정</a> &nbsp;&nbsp;
 				</c:if>
-			<a href="${contextPath }/boardlist">목록</a>&nbsp;&nbsp; 좋아요(<span id="likecount">${board.likecount }</span>)&nbsp;&nbsp;
+			<a href="${contextPath }/boardlist?page=${page}">목록</a>&nbsp;&nbsp; 
+			좋아요(<span id="likecount">${board.likecount }</span>)&nbsp;&nbsp;
 			<c:if test="${user ne Empty }">
 				<c:choose>
 					<c:when test="${select==true }">

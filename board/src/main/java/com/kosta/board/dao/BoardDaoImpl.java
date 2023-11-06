@@ -53,7 +53,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public Integer searchBoardCount(Map<String, Object> param) throws Exception {
-		return sqlSession.selectOne("mapper.board.searchBoarCount", param);
+		return sqlSession.selectOne("mapper.board.searchBoardCount", param);
 	}
 
 	@Override

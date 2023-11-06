@@ -108,5 +108,6 @@
 			delete from file where num=#{num}
 		]]>	
 	</delete>
+		
 
 </mapper>
