@@ -1,9 +1,0 @@
-package com.kosta.di.sample3;
-
-public class Department {
-	private Integer id;
-	private String name;
-	private String location;
-	
-	
-}

@@ -1,5 +1,0 @@
-package com.kosta.di.sample3;
-
-public class EmployeeImpl implements Employee {
-
-}
