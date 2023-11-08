@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="di"/>
 <aop-project name="bank"/>
+<aop-project name="di"/>
 <aop-project name="apiexam"/>
 <aop-project name="board"/>
 </aop-reference-model>

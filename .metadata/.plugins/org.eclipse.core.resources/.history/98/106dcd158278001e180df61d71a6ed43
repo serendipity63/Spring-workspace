@@ -1,6 +1,0 @@
-package com.kosta.bank.dao;
-
-public interface AccountDao {
-	void insertAccount(Account acc) throws Exeption;
-	Account selectAccount(String id) throws Exception;
-}

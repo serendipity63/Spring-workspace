@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.user">
+
+	<insert id="insertUser" parameterType="UserInfo">
+	 <![CDATA[
+insert into users (id,nickname,profileImage,thumbnailImage,email,name,mobile,address,password)
+values (#{id},#{nickname},#{profileImage},#{thumbnailImage},#{email},#{name},#{mobile},#{address},#{password})
+	 ]]>
+	</insert>
+	<insert id="insertUserByKakao" parameterType="UserInfo">
+	 <![CDATA[
+insert into users (id,nickname,gender,profileImage,thumbnailImage,email)
+values (#{id},#{nickname},#{gender},#{profileImage},#{thumbnailImage},#{email})
+	 ]]>
+	</insert>
+	<insert id="insertUserByNaver" parameterType="UserInfo">
+	 <![CDATA[
+insert into users (id,nickname,email,gender,name,mobile,age,birthday)
+values (#{id},#{nickname},#{email},#{gender},#{name},#{mobile},#{age},#{birthday})
+	 ]]>
+	</insert>
+
+	<select id="selectUser" parameterType="String"
+		resultType="UserInfo">
+		<![CDATA[
+		select * from users where id=#{id}
+		]]>
+
+	</select>
+
+</mapper>
